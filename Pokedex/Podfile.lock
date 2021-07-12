@@ -1,0 +1,26 @@
+PODS:
+  - SDWebImage (5.11.1):
+    - SDWebImage/Core (= 5.11.1)
+  - SDWebImage/Core (5.11.1)
+  - SwiftLint (0.43.1)
+  - Toaster (2.3.0)
+
+DEPENDENCIES:
+  - SDWebImage (~> 5.11)
+  - SwiftLint (~> 0.43)
+  - Toaster (~> 2.3)
+
+SPEC REPOS:
+  trunk:
+    - SDWebImage
+    - SwiftLint
+    - Toaster
+
+SPEC CHECKSUMS:
+  SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
+  SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
+  Toaster: c3473963c78e8cabbf6ea6f11ad0fdaae6f54987
+
+PODFILE CHECKSUM: 314979d7a46ace1cbb0ebc68cac536aa4c2316a5
+
+COCOAPODS: 1.10.1
