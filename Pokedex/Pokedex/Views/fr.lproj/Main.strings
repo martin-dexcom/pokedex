@@ -1,0 +1,9 @@
+
+/* Class = "UITabBarItem"; title = "Search"; ObjectID = "Qys-sg-VMy"; */
+"Qys-sg-VMy.title" = "Rechercher";
+
+/* Class = "UITabBarItem"; title = "Discovery"; ObjectID = "cmM-hX-bax"; */
+"cmM-hX-bax.title" = "Découvrir";
+
+/* Class = "UITabBarItem"; title = "Pokedex"; ObjectID = "pIh-tT-rUB"; */
+"pIh-tT-rUB.title" = "Pokedex";
