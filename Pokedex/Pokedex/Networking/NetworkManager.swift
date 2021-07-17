@@ -71,6 +71,31 @@ class NetworkManager {
               return
           }
       }.resume()
+    }
+
+
+  func getPokemon(byId: Int) {
+    let requestURL = baseURL.appendingPathComponent("\(byId)" + "/")
+
+    var request = URLRequest(url: requestURL)
+    request.httpMethod = HTTPMethod.get.rawValue
+
+    URLSession.shared.dataTask(with: request) { (data, _, error) in
+        if let error = error {
+            print("Error fetching pokemon: \(error)")
+            return
+        }
+
+        guard let data = data else { return }
+
+        do {
+            let pokemon = try JSONDecoder().decode(Pokemon.self, from: data)
+            self.pokemonModel = pokemon
+        } catch {
+            print("Error decoding Pokemon: \(error)")
+            return
+        }
+    }.resume()
   }
 
 
