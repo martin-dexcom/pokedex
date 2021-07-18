@@ -21,27 +21,38 @@ extension UIColor {
                 self.init(red: .init(strtoul(String(chars[0...1]), nil, 16)) / 255,
                         green: .init(strtoul(String(chars[2...3]), nil, 16)) / 255,
                          blue: .init(strtoul(String(chars[4...5]), nil, 16)) / 255,
-                         alpha: 1.0)
+                         alpha: alpha)
     }
     
-    private struct PokemonType {
-        static let normal = UIColor(hex: "#A8A77A")
-        static let fire = UIColor(hex: "#EE8130")
-        static let water = UIColor(hex: "#6390F0")
-        static let electric = UIColor(hex: "#F7D02C")
-        static let grass = UIColor(hex: "#7AC74C")
-        static let ice = UIColor(hex: "#96D9D6")
-        static let fighting = UIColor(hex: "#C22E28")
-        static let poison = UIColor(hex: "#A33EA1")
-        static let ground = UIColor(hex: "#E2BF65")
-        static let flying = UIColor(hex: "#A98FF3")
-        static let psychic = UIColor(hex: "#F95587")
-        static let bug = UIColor(hex: "#A6B91A")
-        static let rock = UIColor(hex: "#B6A136")
-        static let ghost = UIColor(hex: "#735797")
-        static let dragon = UIColor(hex: "#6F35FC")
-        static let dark = UIColor(hex: "#705746")
-        static let steel = UIColor(hex: "#B7B7CE")
-        static let fairy = UIColor(hex: "#D685AD")
+    struct TypeColors {
+        
+        private static let colorDictionary: [String: UIColor?] = [
+            "normal" : UIColor(hex: "#A8A77A"),
+            "fire" : UIColor(hex: "#EE8130"),
+            "water" : UIColor(hex: "#6390F0"),
+            "electric" : UIColor(hex: "#F7D02C"),
+            "grass" : UIColor(hex: "#7AC74C"),
+            "ice" : UIColor(hex: "#96D9D6"),
+            "fighting" : UIColor(hex: "#C22E28"),
+            "poison" : UIColor(hex: "#A33EA1"),
+            "ground" : UIColor(hex: "#A33EA1"),
+            "flying" : UIColor(hex: "#A98FF3"),
+            "psychic" : UIColor(hex: "#F95587"),
+            "bug" : UIColor(hex: "#A6B91A"),
+            "rock" : UIColor(hex: "#B6A136"),
+            "ghost" : UIColor(hex: "#735797"),
+            "dragon" : UIColor(hex: "#6F35FC"),
+            "dark" :  UIColor(hex: "#705746"),
+            "steel" : UIColor(hex: "#B7B7CE"),
+            "fairy" : UIColor(hex: "#D685AD")
+        ]
+        
+        static func getColor(fromType type: String) -> UIColor {
+            guard let color = colorDictionary[type] else {
+                return .black
+            }
+            
+            return color ?? .black
+        }
     }
 }
