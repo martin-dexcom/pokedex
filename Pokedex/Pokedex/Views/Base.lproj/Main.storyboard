@@ -31,6 +31,16 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hAX-Nb-TZs">
+                                <rect key="frame" x="151" y="433" width="112" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Pokemon found!"/>
+                                <connections>
+                                    <segue destination="K0r-el-PvI" kind="show" id="Zrb-Wx-Koz"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
@@ -40,12 +50,23 @@
             </objects>
             <point key="canvasLocation" x="938" y="84"/>
         </scene>
+        <!--Detail-->
+        <scene sceneID="KNF-It-ecS">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Detail" id="K0r-el-PvI" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="J7z-ga-28a"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g2T-lz-dxS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1950" y="84"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="0QG-iA-iiT">
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="J5y-TU-HOE" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eZp-eE-mkQ">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
