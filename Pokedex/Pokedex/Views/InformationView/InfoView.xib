@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InfoView" customModule="Pokedex" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="eQc-F9-fKx"/>
+                <outlet property="infoTitle" destination="3ya-Db-coD" id="v0F-Sg-hu3"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="306"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pokedex-logo" translatesAutoresizingMaskIntoConstraints="NO" id="l6X-Q3-77a">
+                    <rect key="frame" x="50" y="20" width="200" height="200"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="85f-aS-PuL"/>
+                        <constraint firstAttribute="width" constant="200" id="Wac-gp-viV"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NO RESULTS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ya-Db-coD">
+                    <rect key="frame" x="20" y="230" width="260" height="41"/>
+                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="30"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="3ya-Db-coD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="3Rl-gv-6Js"/>
+                <constraint firstItem="l6X-Q3-77a" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="549-tY-Xj3"/>
+                <constraint firstAttribute="trailing" secondItem="3ya-Db-coD" secondAttribute="trailing" constant="20" id="B2E-cW-Mxn"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="3ya-Db-coD" secondAttribute="bottom" constant="20" id="e7w-Fo-Lws"/>
+                <constraint firstItem="3ya-Db-coD" firstAttribute="top" secondItem="l6X-Q3-77a" secondAttribute="bottom" constant="10" id="g9X-rr-EDO"/>
+                <constraint firstItem="l6X-Q3-77a" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="kO1-Tw-5hh"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="149.27536231884059" y="-27.455357142857142"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Pokedex-logo" width="183" height="183"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
