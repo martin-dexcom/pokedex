@@ -155,6 +155,7 @@
                         <outlet property="infoView" destination="bXZ-ru-qCT" id="EkN-n7-qRc"/>
                         <outlet property="pokeSearchView" destination="VEg-bF-ntw" id="jfQ-gc-IHV"/>
                         <outlet property="tableView" destination="eF8-Om-vZQ" id="x3S-wJ-K0g"/>
+                        <segue destination="TLe-Yd-5jZ" kind="show" identifier="detailSegue" id="lcQ-w2-n8W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0gp-kc-NOJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -184,7 +185,6 @@
         <!--Search-->
         <scene sceneID="ZNv-uC-AyF">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wNg-6r-VrD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="UVM-y9-hvP" customClass="PokeSearchViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HBk-y1-en2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -271,6 +271,7 @@
                         <outlet property="tableView" destination="iC1-Ph-UO3" id="Wj6-dM-tl0"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wNg-6r-VrD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="790" y="808"/>
         </scene>
@@ -420,13 +421,27 @@
                         <outlet property="infoView" destination="wPc-f6-RcR" id="q54-qD-N3U"/>
                         <outlet property="pokeSearchView" destination="Rqs-uY-x3i" id="akX-xX-QfK"/>
                         <outlet property="tableView" destination="mjJ-hQ-bWv" id="OCn-E1-TRc"/>
+                        <segue destination="TLe-Yd-5jZ" kind="show" identifier="detailSegue" id="bha-qE-U8J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Fz-Zr-gSV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1132" y="84"/>
         </scene>
+        <!--Detail-->
+        <scene sceneID="YYa-sa-ei3">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="DetailViewController" storyboardName="Detail" id="TLe-Yd-5jZ" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="cED-j0-VbZ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="boU-mi-VXF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2086" y="-285"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="lcQ-w2-n8W"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Pokedex-logo" width="183" height="183"/>
         <image name="globe" catalog="system" width="128" height="121"/>

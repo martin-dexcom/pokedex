@@ -15,6 +15,7 @@ class PokedDexViewController: UIViewController {
     @IBOutlet weak var infoView: InfoView!
     
     var pokemonNames: [String] = []
+    var selectedIndex: Int?
     
     override func viewDidLoad() {
         pokeSearchView.delegate = self
@@ -58,6 +59,10 @@ class PokedDexViewController: UIViewController {
             updateUI()
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // TODO: Get ViewController and send pokemon data
+    }
 }
 
 extension PokedDexViewController: PokeSearchDelegate {
@@ -67,7 +72,11 @@ extension PokedDexViewController: PokeSearchDelegate {
 }
 
 extension PokedDexViewController: UITableViewDelegate {
-    // TODO: Use this delegate
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // TODO: SEND POKEMON TO DETAIL on prepare for segue
+        selectedIndex = indexPath.row
+        performSegue(withIdentifier: "detailSegue", sender: self)
+    }
 }
 
 extension PokedDexViewController: UITableViewDataSource {
