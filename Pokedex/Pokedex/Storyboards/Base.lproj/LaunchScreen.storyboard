@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iTJLogo" translatesAutoresizingMaskIntoConstraints="NO" id="WdB-2D-W2Z">
-                                <rect key="frame" x="164" y="761" width="63" height="63"/>
+                                <rect key="frame" x="163.66666666666666" y="761" width="63" height="63"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="63" id="0k6-OH-NIP"/>
                                     <constraint firstAttribute="width" constant="63" id="u7Y-uu-8y5"/>
