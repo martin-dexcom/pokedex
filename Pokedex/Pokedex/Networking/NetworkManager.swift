@@ -23,7 +23,7 @@ class NetworkManager {
     var pokemonModel: Pokemon?
 
 
-  func getAllPokemons(){
+  func getAllPokemons(completion: @escaping  ([Pokedex]) -> Void) {
     let requestURL = baseURL
 
     var request = URLRequest(url: requestURL)
@@ -40,6 +40,10 @@ class NetworkManager {
         do {
             let pokemon = try JSONDecoder().decode(Pokedex.self, from: data)
             self.pokedexModel = pokemon
+            // Return the result with the completion handler.
+            DispatchQueue.main.async {
+              completion([pokemon])
+            }
           print(self.pokedexModel?.results ?? "no results")
         } catch {
             print("Error decoding Pokemon: \(error)")
@@ -49,7 +53,7 @@ class NetworkManager {
   }
 
 
-    func getPokemon(withName: String) {
+  func getPokemon(withName: String, completion: @escaping  ([Pokemon]) -> Void) {
       let requestURL = baseURL.appendingPathComponent(withName + "/")
 
       var request = URLRequest(url: requestURL)
@@ -66,6 +70,10 @@ class NetworkManager {
           do {
               let pokemon = try JSONDecoder().decode(Pokemon.self, from: data)
               self.pokemonModel = pokemon
+              // Return the result with the completion handler.
+              DispatchQueue.main.async {
+                  completion([pokemon])
+              }
           } catch {
               print("Error decoding Pokemon: \(error)")
               return
@@ -74,7 +82,7 @@ class NetworkManager {
     }
 
 
-  func getPokemon(byId: Int) {
+  func getPokemon(byId: Int, completion: @escaping  ([Pokemon]) -> Void) {
     let requestURL = baseURL.appendingPathComponent("\(byId)" + "/")
 
     var request = URLRequest(url: requestURL)
@@ -91,6 +99,10 @@ class NetworkManager {
         do {
             let pokemon = try JSONDecoder().decode(Pokemon.self, from: data)
             self.pokemonModel = pokemon
+            // Return the result with the completion handler.
+            DispatchQueue.main.async {
+                 completion([pokemon])
+             }
         } catch {
             print("Error decoding Pokemon: \(error)")
             return

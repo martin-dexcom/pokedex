@@ -36,11 +36,17 @@ class ViewController: UIViewController  {
         // bring data from network
         print("bring data from network")
         let network = NetworkManager()
-        network.getAllPokemons()
+        network.getAllPokemons(completion: { data in
+          print(data)
+        })
         // test
-        network.getPokemon(withName: "bulbasaur")
+        network.getPokemon(withName: "bulbasaur", completion: { data in
+          print(data)
+        })
         // by ID
-        network.getPokemon(byId: 12)
+          network.getPokemon(byId: 12, completion: { data in
+            print(data)
+          })
       }
 
     }
