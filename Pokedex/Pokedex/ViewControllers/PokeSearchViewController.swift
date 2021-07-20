@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Toaster
 
 class PokeSearchViewController: UIViewController {
     
@@ -15,6 +16,7 @@ class PokeSearchViewController: UIViewController {
     @IBOutlet weak var infoView: InfoView!
     
     var pokemonNames: [String] = []
+    var currentPokemon: Pokemon?
     
     override func viewDidLoad() {
         pokeSearchView.delegate = self
@@ -24,6 +26,14 @@ class PokeSearchViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         updateUI()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let navController = segue.destination as? UINavigationController,
+              let detailVc = navController.topViewController as? DetailViewController else {
+            return
+        }
+        detailVc.pokemon = currentPokemon
     }
     
     override func viewDidLayoutSubviews() {
@@ -39,17 +49,49 @@ class PokeSearchViewController: UIViewController {
     }
     
     private func updateUI() {
-        infoView.isHidden = !pokemonNames.isEmpty
-        tableView.reloadData()
+        self.infoView.isHidden = !self.pokemonNames.isEmpty
+        self.tableView.reloadData()
+    }
+    
+    private func handleNewPokemon(pokemon: Pokemon?) {
+        currentPokemon = pokemon
+        if currentPokemon != nil {
+            addPokemonToHistory()
+            updateUI()
+            showDetailView()
+        }
+    }
+    
+    private func addPokemonToHistory() {
+        let pokeName = currentPokemon?.name?.capitalized ?? ""
+        let pokeOrder = currentPokemon?.order ?? 0
+        let pokemonNameAndId = "\(pokeName) #\(pokeOrder)"
+        pokemonNames.append(pokemonNameAndId)
+        updateUI()
+    }
+    
+    private func showDetailView() {
+        self.performSegue(withIdentifier: "detailSegue", sender: self)
     }
     
     private func searchPokemon(pokemonName: String?) {
-        // TODO: Perform search
-        // TODO: If pokemon found send the pokemon to Detail View
-        // TODO: Add button to DetailView to add pokemon to PokeDex
-        if let name = pokemonName {
-            pokemonNames.append(name)
-            updateUI()
+        guard let pokemonName = pokemonName?.lowercased() else {
+            return
+        }
+        NetworkManager.shared.getPokemon(withName: pokemonName) { response in
+            switch response {
+            case .success(let pokemons):
+                DispatchQueue.main.async {
+                    self.handleNewPokemon(pokemon: pokemons.first)
+                }
+                break
+            case .failed:
+                DispatchQueue.main.async {
+                    let toast = Toast(text: "Pokemon not found", duration: Delay.short)
+                    toast.show()
+                }
+                break
+            }
         }
     }
 }

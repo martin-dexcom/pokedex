@@ -1,5 +1,5 @@
 //
-//  Pokedex.swift
+//  PokemonsResponse.swift
 //  Pokedex
 //
 //  Created by Josué Arambula on 7/15/21.
@@ -16,7 +16,7 @@ import Foundation
 
 // MARK: - HTTPPokeapiCoAPIV2Pokemon Model
 
-struct Pokedex: Decodable {
+struct PokemonsResponse: Decodable {
     let count: Int?
     let next: String?
     let results: [Results]
@@ -32,7 +32,7 @@ struct Results: Decodable {
 // MARK: - Extensions
 
 /// In case the parse returns an empty Model, then create an empty struct to avoid the error
-extension Pokedex {
+extension PokemonsResponse {
 
     init() {
         self.count = 0

@@ -11,7 +11,7 @@ import Toaster
 
 class DetailViewController: UIViewController {
     // MARK: - Properties
-    var pokemon: Pokemon = MockDataSource.pikachu
+    var pokemon: Pokemon?
     
     // MARK: - UI Elements
     @IBOutlet weak var lblName: UILabel!
@@ -30,7 +30,7 @@ class DetailViewController: UIViewController {
     // MARK: - Lifecycle Methods
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+            super.viewDidLoad()
         setupUI()
         setupPokemonUI()
     }
@@ -54,20 +54,23 @@ class DetailViewController: UIViewController {
     /// Sets up the UI with Pokemon Data
     private func setupPokemonUI() {
         // Setup Labels
-        lblName.text = pokemon.name
-        lblSeries.text = "#\(pokemon.order)"
-        let pokemonType = pokemon.types.first?.type.name
+        guard let pokemon = self.pokemon else {
+            return
+        }
+        lblName.text = pokemon.name?.capitalized
+        lblSeries.text = "#\(pokemon.order ?? 0)"
+        let pokemonType = pokemon.types?.first?.type?.name
         lblType.text = pokemonType?.capitalized
         
         // Setup Stats
-        pokemon.stats.forEach { stat in
-            let statView = StatElement(name: stat.stat.name, power: stat.baseStat)
+        pokemon.stats?.forEach { stat in
+            let statView = StatElement(name: stat.stat?.name ?? "", power: stat.baseStat ?? 0)
             statView.translatesAutoresizingMaskIntoConstraints = false
             vsStats.addArrangedSubview(statView)
         }
         
         // Setup images
-        imgSprite.sd_setImage(with: URL(string: pokemon.sprites.frontDefault ?? ""), completed: nil)
+        imgSprite.sd_setImage(with: URL(string: pokemon.sprites?.frontDefault ?? ""), completed: nil)
         
         // Setup colors
         let typeColor = UIColor.TypeColors.getColor(fromType: pokemonType ?? "")
@@ -79,7 +82,7 @@ class DetailViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func AddButtonPressed(_ sender: Any) {
-        let toast = Toast(text: "\(pokemon.name) was stored in the Pokedex", duration: Delay.short)
+        let toast = Toast(text: "\(pokemon?.name ?? "") was stored in the Pokedex", duration: Delay.short)
         toast.show()
     }
 }
