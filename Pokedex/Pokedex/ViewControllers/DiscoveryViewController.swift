@@ -35,7 +35,7 @@ class DiscoveryViewController: UIViewController {
             case .success(let pokemons):
                 self.pokemons.append(contentsOf: pokemons)
                 if self.firstLoad {
-                    self.filteredPokemons = pokemons
+                    self.filteredPokemons = self.pokemons
                 }
                 self.updateUI()
                 break

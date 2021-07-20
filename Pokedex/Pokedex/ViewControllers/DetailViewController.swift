@@ -12,6 +12,7 @@ import Toaster
 class DetailViewController: UIViewController {
     // MARK: - Properties
     var pokemon: Pokemon?
+    var hideAddButton = false
     
     // MARK: - UI Elements
     @IBOutlet weak var lblName: UILabel!
@@ -49,6 +50,7 @@ class DetailViewController: UIViewController {
         vType.withShadow()
         vType.round()
         vStats.round(radius: 30, corners: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
+        btnSave.isHidden = hideAddButton
     }
     
     /// Sets up the UI with Pokemon Data
@@ -81,8 +83,12 @@ class DetailViewController: UIViewController {
     }
     
     // MARK: - Actions
-    @IBAction func AddButtonPressed(_ sender: Any) {
-        let toast = Toast(text: "\(pokemon?.name ?? "") was stored in the Pokedex", duration: Delay.short)
+    @IBAction func actionButtonPressed(_ sender: Any) {
+        guard let pokemon = self.pokemon else {
+            return
+        }
+        CoreDataManager.shared.savePokemonInPokedex(pokemon: pokemon)
+        let toast = Toast(text: "\(pokemon.name ?? "") was stored in the Pokedex", duration: Delay.short)
         toast.show()
     }
 }
