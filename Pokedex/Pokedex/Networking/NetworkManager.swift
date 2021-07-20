@@ -31,8 +31,8 @@ class NetworkManager {
         urlComponent?.queryItems = [
             URLQueryItem(name: "limit", value: "6"),
         ]
-        let url = nextPokemonsUrl != nil ? nextPokemonsUrl : urlComponent?.url
-        guard let url = url else {
+        let nextUrl = nextPokemonsUrl != nil ? nextPokemonsUrl : urlComponent?.url
+        guard let url = nextUrl else {
             callback(.failed)
             return
         }
