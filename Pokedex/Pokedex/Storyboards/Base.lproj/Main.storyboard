@@ -269,6 +269,7 @@
                         <outlet property="infoView" destination="0uc-Ob-XVE" id="d3R-wb-Nzo"/>
                         <outlet property="pokeSearchView" destination="JP5-cZ-gSm" id="PLj-N4-mNo"/>
                         <outlet property="tableView" destination="iC1-Ph-UO3" id="Wj6-dM-tl0"/>
+                        <segue destination="TLe-Yd-5jZ" kind="show" identifier="detailSegue" id="FZu-5M-tae"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wNg-6r-VrD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -426,7 +427,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Fz-Zr-gSV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1132" y="84"/>
+            <point key="canvasLocation" x="948" y="84"/>
         </scene>
         <!--Detail-->
         <scene sceneID="YYa-sa-ei3">
@@ -436,11 +437,11 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="boU-mi-VXF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2086" y="-285"/>
+            <point key="canvasLocation" x="1943" y="84"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="lcQ-w2-n8W"/>
+        <segue reference="FZu-5M-tae"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Pokedex-logo" width="183" height="183"/>

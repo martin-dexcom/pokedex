@@ -14,89 +14,97 @@ enum HTTPMethod: String {
     case delete = "DELETE"
 }
 
+enum PokeApiResponse {
+    case success(pokemon: [Pokemon])
+    case failed
+}
 
 class NetworkManager {
     static let shared = NetworkManager()
-
+    
     let baseURL = URL(string: "https://pokeapi.co/api/v2/pokemon/")!
-    var pokedexModel: Pokedex?
-    var pokemonModel: Pokemon?
-
-
-  func getAllPokemons(){
-    let requestURL = baseURL
-
-    var request = URLRequest(url: requestURL)
-    request.httpMethod = HTTPMethod.get.rawValue
-
-    URLSession.shared.dataTask(with: request) { (data, _, error) in
-        if let error = error {
-            print("Error fetching pokemon: \(error)")
+    var nextPokemonsUrl: URL?
+    
+    /// Only gets 6 pokemons at a time.
+    func getPokemons(callback: @escaping (PokeApiResponse) -> Void) {
+        var urlComponent = URLComponents(string: baseURL.absoluteString)
+        urlComponent?.queryItems = [
+            URLQueryItem(name: "limit", value: "6"),
+        ]
+        let url = nextPokemonsUrl != nil ? nextPokemonsUrl : urlComponent?.url
+        guard let url = url else {
+            callback(.failed)
             return
         }
+        var request = URLRequest(url: url)
+        request.httpMethod = HTTPMethod.get.rawValue
+        
+        let dispatchGroup = DispatchGroup()
+        var pokemons: [Pokemon] = []
 
-        guard let data = data else { return }
-
-        do {
-            let pokemon = try JSONDecoder().decode(Pokedex.self, from: data)
-            self.pokedexModel = pokemon
-          print(self.pokedexModel?.results ?? "no results")
-        } catch {
-            print("Error decoding Pokemon: \(error)")
-            return
-        }
-    }.resume()
-  }
-
-
-    func getPokemon(withName: String) {
-      let requestURL = baseURL.appendingPathComponent(withName + "/")
-
-      var request = URLRequest(url: requestURL)
-      request.httpMethod = HTTPMethod.get.rawValue
-
-      URLSession.shared.dataTask(with: request) { (data, _, error) in
-          if let error = error {
-              print("Error fetching pokemon: \(error)")
-              return
-          }
-
-          guard let data = data else { return }
-
-          do {
-              let pokemon = try JSONDecoder().decode(Pokemon.self, from: data)
-              self.pokemonModel = pokemon
-          } catch {
-              print("Error decoding Pokemon: \(error)")
-              return
-          }
-      }.resume()
+        URLSession.shared.dataTask(with: request) { (data, _, error) in
+            if let error = error {
+                print("Error fetching pokemon: \(error)")
+                return
+            }
+            
+            guard let data = data else { return }
+            
+            do {
+                let response = try JSONDecoder().decode(PokemonsResponse.self, from: data)
+                if let nextPageUrl = response.next {
+                    self.nextPokemonsUrl = URL(string: nextPageUrl)
+                }
+                response.results.forEach { result in
+                    dispatchGroup.enter()
+                    self.getPokemon(withName: result.name?.lowercased() ?? "") { response in
+                        switch response {
+                        case .success(let resPokemons):
+                            if let pokemon = resPokemons.first {
+                                pokemons.append(pokemon)
+                            }
+                            dispatchGroup.leave()
+                            break
+                        case .failed:
+                            dispatchGroup.leave()
+                            break
+                        }
+                    }
+                }
+            } catch {
+                print("Error decoding Pokemon: \(error)")
+                return
+            }
+            dispatchGroup.notify(queue: .main) {
+                callback(.success(pokemon: pokemons))
+            }
+        }.resume()
     }
-
-
-  func getPokemon(byId: Int) {
-    let requestURL = baseURL.appendingPathComponent("\(byId)" + "/")
-
-    var request = URLRequest(url: requestURL)
-    request.httpMethod = HTTPMethod.get.rawValue
-
-    URLSession.shared.dataTask(with: request) { (data, _, error) in
-        if let error = error {
-            print("Error fetching pokemon: \(error)")
-            return
-        }
-
-        guard let data = data else { return }
-
-        do {
-            let pokemon = try JSONDecoder().decode(Pokemon.self, from: data)
-            self.pokemonModel = pokemon
-        } catch {
-            print("Error decoding Pokemon: \(error)")
-            return
-        }
-    }.resume()
-  }
-
-
+    
+    
+    func getPokemon(withName: String, callback: @escaping (PokeApiResponse) -> Void) {
+        let requestURL = baseURL.appendingPathComponent(withName + "/")
+        
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = HTTPMethod.get.rawValue
+        
+        URLSession.shared.dataTask(with: request) { (data, _, error) in
+            if let error = error {
+                print("Error fetching pokemon: \(error)")
+                callback(.failed)
+                return
+            }
+            
+            guard let data = data else { return }
+            
+            do {
+                let pokemon = try JSONDecoder().decode(Pokemon.self, from: data)
+                callback(.success(pokemon: [pokemon]))
+            } catch {
+                print("Error decoding Pokemon: \(error)")
+                callback(.failed)
+                return
+            }
+        }.resume()
+    }
 }
