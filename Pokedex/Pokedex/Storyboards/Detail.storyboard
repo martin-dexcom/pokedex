@@ -28,10 +28,11 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="t7u-G5-xXZ">
                                         <rect key="frame" x="21" y="80" width="386" height="211"/>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wPT-4k-tbJ">
-                                        <rect key="frame" x="386" y="26" width="20.666666666666686" height="20"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wPT-4k-tbJ">
+                                        <rect key="frame" x="388.66666666666669" y="25" width="18" height="22"/>
+                                        <state key="normal" image="plus" catalog="system"/>
                                         <connections>
-                                            <action selector="AddButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="CHM-b6-fuc"/>
+                                            <action selector="actionButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="CHM-b6-fuc"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -153,6 +154,7 @@
     </scenes>
     <resources>
         <image name="Pokedex-logo" width="183" height="183"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
