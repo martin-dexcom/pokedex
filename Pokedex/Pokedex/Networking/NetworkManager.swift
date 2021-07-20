@@ -39,9 +39,6 @@ class NetworkManager {
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.get.rawValue
         
-        let dispatchGroup = DispatchGroup()
-        var pokemons: [Pokemon] = []
-
         URLSession.shared.dataTask(with: request) { (data, _, error) in
             if let error = error {
                 print("Error fetching pokemon: \(error)")
@@ -55,32 +52,45 @@ class NetworkManager {
                 if let nextPageUrl = response.next {
                     self.nextPokemonsUrl = URL(string: nextPageUrl)
                 }
-                response.results.forEach { result in
-                    dispatchGroup.enter()
-                    self.getPokemon(withName: result.name?.lowercased() ?? "") { response in
-                        switch response {
-                        case .success(let resPokemons):
-                            if let pokemon = resPokemons.first {
-                                pokemons.append(pokemon)
-                            }
-                            dispatchGroup.leave()
-                            break
-                        case .failed:
-                            dispatchGroup.leave()
-                            break
-                        }
-                    }
+                let names = response.results.map { result in
+                    result.name ?? ""
+                }
+                
+                self.getPokemons(withNames: names) { response in
+                    callback(response)
                 }
             } catch {
                 print("Error decoding Pokemon: \(error)")
                 return
             }
-            dispatchGroup.notify(queue: .main) {
-                callback(.success(pokemon: pokemons))
-            }
         }.resume()
     }
     
+    /// Get pokemons with the names  on the array
+    func getPokemons(withNames names: [String], callback: @escaping (PokeApiResponse) -> Void) {
+        let dispatchGroup = DispatchGroup()
+        var pokemons: [Pokemon] = []
+
+        names.forEach { name in
+            dispatchGroup.enter()
+            self.getPokemon(withName: name.lowercased() ) { response in
+                switch response {
+                case .success(let resPokemons):
+                    if let pokemon = resPokemons.first {
+                        pokemons.append(pokemon)
+                    }
+                    dispatchGroup.leave()
+                    break
+                case .failed:
+                    dispatchGroup.leave()
+                    break
+                }
+            }
+        }
+        dispatchGroup.notify(queue: .main) {
+            callback(.success(pokemon: pokemons))
+        }
+    }
     
     func getPokemon(withName: String, callback: @escaping (PokeApiResponse) -> Void) {
         let requestURL = baseURL.appendingPathComponent(withName + "/")

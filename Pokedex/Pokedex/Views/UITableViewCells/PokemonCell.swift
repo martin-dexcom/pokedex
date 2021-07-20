@@ -34,4 +34,18 @@ class PokemonCell: UITableViewCell {
         pokemonNameLabel.text = pokemonName
         pokemonTypeLabel.text = pokemonType?.capitalized
     }
+    func setupWithPokemon(pokemon: PokemonCD) {
+        let pokemonType = pokemon.type
+        let pokemonOrder = "#\(pokemon.id)"
+        let pokemonName = pokemon.name?.capitalized
+        let typeColor = UIColor.TypeColors.getColor(fromType: pokemonType ?? "")
+        pokemonView.backgroundColor = typeColor
+        pokemonTypeLabel.backgroundColor = typeColor
+        pokemonImageView.sd_setImage(with: URL(string: pokemon.image ?? ""), completed: nil)
+        pokemonNumberLabel.text = pokemonOrder
+        pokemonNameLabel.text = pokemonName
+        pokemonTypeLabel.text = pokemonType?.capitalized
+    }
+
+    
 }
