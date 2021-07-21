@@ -34,7 +34,7 @@ class SearchTests: XCTestCase {
 
   }
 
-  func testEmailTextField_WhenCreated_HasEmailAddressContentTypeSet() throws {
+  func testTextField_WhenCreated_HasNameContentTypeSet() throws {
     let searchTextField = try XCTUnwrap(sut.pokeSearchView.searchBar, "The Search Bar UITextField is not connected")
 
     XCTAssertEqual(searchTextField.textContentType, UITextContentType.name, "Search UITextField does not have a Name Content Type set")
