@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="PokemonCell" rowHeight="140" id="9jZ-aA-Hv2" customClass="PokemonCell" customModule="Pokedex" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9jZ-aA-Hv2" id="RJH-Bm-45l">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHk-Kq-oVM">
+                        <rect key="frame" x="10" y="10" width="394" height="120"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ICn-mt-2vY">
+                                <rect key="frame" x="304" y="31" width="70" height="68"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="OKc-rx-sg2"/>
+                                    <constraint firstAttribute="width" constant="70" id="vcl-Ym-c7C"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#35" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DNY-wc-y4b">
+                                <rect key="frame" x="347" y="10" width="27" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="jpt-wb-eWl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dCS-zy-pf3">
+                                <rect key="frame" x="20" y="38.5" width="87" height="53"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pikachu" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dg2-5i-0J8">
+                                        <rect key="frame" x="0.0" y="0.0" width="87" height="33"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="24"/>
+                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Electric" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9BR-4Z-wOH">
+                                        <rect key="frame" x="13.5" y="33" width="60" height="20"/>
+                                        <color key="backgroundColor" name="AccentColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="dUf-FI-9aW"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="h4N-n5-0ik"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="10"/>
+                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="9BR-4Z-wOH" firstAttribute="centerX" secondItem="Dg2-5i-0J8" secondAttribute="centerX" id="3np-gc-vUh"/>
+                                    <constraint firstItem="Dg2-5i-0J8" firstAttribute="top" secondItem="dCS-zy-pf3" secondAttribute="top" id="9xb-Z9-CPU"/>
+                                    <constraint firstAttribute="bottom" secondItem="9BR-4Z-wOH" secondAttribute="bottom" id="EfR-iy-dgm"/>
+                                    <constraint firstItem="Dg2-5i-0J8" firstAttribute="leading" secondItem="dCS-zy-pf3" secondAttribute="leading" id="O9J-aa-M2Y"/>
+                                    <constraint firstItem="9BR-4Z-wOH" firstAttribute="top" secondItem="Dg2-5i-0J8" secondAttribute="bottom" id="b42-bI-Gv5"/>
+                                    <constraint firstAttribute="trailing" secondItem="Dg2-5i-0J8" secondAttribute="trailing" id="ueB-f5-xvi"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.15000000596046448" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pokedex-logo" translatesAutoresizingMaskIntoConstraints="NO" id="Hk0-g4-BLw">
+                                <rect key="frame" x="137" y="0.0" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Hk0-g4-BLw" secondAttribute="height" multiplier="1:1" id="fKg-zJ-om0"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="ICn-mt-2vY" secondAttribute="bottom" constant="20" id="1if-aR-K96"/>
+                            <constraint firstItem="dCS-zy-pf3" firstAttribute="centerY" secondItem="ICn-mt-2vY" secondAttribute="centerY" id="4X6-3w-rhC"/>
+                            <constraint firstItem="Hk0-g4-BLw" firstAttribute="centerY" secondItem="dHk-Kq-oVM" secondAttribute="centerY" id="PTg-LD-VCn"/>
+                            <constraint firstItem="dCS-zy-pf3" firstAttribute="leading" secondItem="dHk-Kq-oVM" secondAttribute="leading" constant="20" id="Spm-iV-X01"/>
+                            <constraint firstItem="Hk0-g4-BLw" firstAttribute="height" secondItem="dHk-Kq-oVM" secondAttribute="height" id="UmF-Ar-oFA"/>
+                            <constraint firstItem="ICn-mt-2vY" firstAttribute="top" secondItem="DNY-wc-y4b" secondAttribute="bottom" constant="5" id="WfV-2h-nBk"/>
+                            <constraint firstItem="DNY-wc-y4b" firstAttribute="top" secondItem="dHk-Kq-oVM" secondAttribute="top" constant="10" id="YL7-Zw-j6k"/>
+                            <constraint firstAttribute="trailing" secondItem="ICn-mt-2vY" secondAttribute="trailing" constant="20" id="fU2-jw-bDh"/>
+                            <constraint firstItem="Hk0-g4-BLw" firstAttribute="centerX" secondItem="dHk-Kq-oVM" secondAttribute="centerX" id="flc-46-4Tu"/>
+                            <constraint firstAttribute="trailing" secondItem="DNY-wc-y4b" secondAttribute="trailing" constant="20" id="nRK-Ha-wgG"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                <color key="tintColor" systemColor="systemGray5Color"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="dHk-Kq-oVM" secondAttribute="bottom" constant="10" id="5cW-pI-T2m"/>
+                    <constraint firstItem="dHk-Kq-oVM" firstAttribute="top" secondItem="RJH-Bm-45l" secondAttribute="top" constant="10" id="9Zv-2I-a1A"/>
+                    <constraint firstItem="dHk-Kq-oVM" firstAttribute="leading" secondItem="RJH-Bm-45l" secondAttribute="leading" constant="10" id="juE-k2-P74"/>
+                    <constraint firstAttribute="trailing" secondItem="dHk-Kq-oVM" secondAttribute="trailing" constant="10" id="t3k-wB-Ibf"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <connections>
+                <outlet property="pokemonImageView" destination="ICn-mt-2vY" id="QHD-Yp-N9i"/>
+                <outlet property="pokemonNameLabel" destination="Dg2-5i-0J8" id="I1w-3y-I5N"/>
+                <outlet property="pokemonNumberLabel" destination="DNY-wc-y4b" id="JIt-hr-IPM"/>
+                <outlet property="pokemonTypeLabel" destination="9BR-4Z-wOH" id="SRj-yF-jV9"/>
+                <outlet property="pokemonView" destination="dHk-Kq-oVM" id="Ig8-6h-0bS"/>
+            </connections>
+            <point key="canvasLocation" x="-257" y="-65"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Pokedex-logo" width="183" height="183"/>
+        <image name="questionmark" catalog="system" width="96" height="128"/>
+        <namedColor name="AccentColor">
+            <color red="1" green="0.59700000286102295" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

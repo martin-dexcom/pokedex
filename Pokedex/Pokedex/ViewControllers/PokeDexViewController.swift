@@ -22,7 +22,8 @@ class PokedDexViewController: UIViewController {
         pokeSearchView.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
-        
+        tableView.register(UINib(nibName: "PokemonCell", bundle: .main), forCellReuseIdentifier: "PokemonCell")
+
         // TODO: Get pokemon count
         let title = pokemons.isEmpty
             ? "Go search some Pokemons!"

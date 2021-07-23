@@ -23,7 +23,8 @@ class DiscoveryViewController: UIViewController {
         pokeSearchView.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
-        
+        self.tableView.register(UINib(nibName: "PokemonCell", bundle: nil), forCellReuseIdentifier: "PokemonCell")
+
         pokeSearchView.title.text = "Discover new Pokemons!"
     }
     
