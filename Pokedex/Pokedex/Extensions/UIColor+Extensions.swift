@@ -9,19 +9,24 @@ import UIKit
 
 extension UIColor {
     convenience init?(hex: String, alpha: CGFloat = 1.0) {
-        var chars = Array(hex.hasPrefix("#") ? hex.dropFirst() : hex[...])
-                switch chars.count {
-                case 3:
-                    chars = chars.flatMap { [$0, $0] }
-                case 6:
-                    break
-                default:
-                    return nil
-                }
-                self.init(red: .init(strtoul(String(chars[0...1]), nil, 16)) / 255,
-                        green: .init(strtoul(String(chars[2...3]), nil, 16)) / 255,
-                         blue: .init(strtoul(String(chars[4...5]), nil, 16)) / 255,
-                         alpha: alpha)
+        var cHex: String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+        
+        if cHex.hasPrefix("#") {
+            cHex.remove(at: cHex.startIndex)
+        }
+        
+        guard cHex.count == 6 else {
+            self.init(red: 0, green: 0,blue: 0, alpha: 1.0)
+            return
+        }
+        
+        var rgbValue: UInt32 = 0
+        Scanner(string: cHex).scanHexInt32(&rgbValue)
+        
+        self.init(red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255,
+                       green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255,
+                       blue: CGFloat(rgbValue & 0x0000FF) / 255,
+                       alpha: CGFloat(1.0))
     }
     
     struct TypeColors {
