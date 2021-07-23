@@ -34,6 +34,7 @@ class PokemonCell: UITableViewCell {
         pokemonNameLabel.text = pokemonName
         pokemonTypeLabel.text = pokemonType?.capitalized
     }
+    
     func setupWithPokemon(pokemon: PokemonCD) {
         let pokemonType = pokemon.type
         let pokemonOrder = "#\(pokemon.id)"
