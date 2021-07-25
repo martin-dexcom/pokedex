@@ -16,6 +16,7 @@ class PokemonDetailViewController: UIViewController {
     @IBOutlet weak var imgPokemon: UIImageView!
     
     @IBOutlet weak var vStats: UIView!
+    @IBOutlet weak var statsVstack: UIStackView!
     
     
     
@@ -47,6 +48,13 @@ class PokemonDetailViewController: UIViewController {
             imgPokemon.sd_setImage(with: unwrappedURL, completed: nil)
         }
         
+        // Setup my Vstack
+        pokemon.stats.forEach { (name: String, power: Int) in
+            let statElement = StatElement(name, power)
+            statsVstack.addArrangedSubview(statElement)
+        }
+        
+        
         // Add a corner radius
         vStats.roundCorners(withRadius: 30)
     }
@@ -62,4 +70,52 @@ class PokemonDetailViewController: UIViewController {
     }
     */
 
+}
+
+class StatElement: UIView {
+    
+    convenience init(_ name: String,_ power: Int) {
+        self.init()
+        commonInitializer(name: name, power: power)
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func commonInitializer(name: String, power: Int) {
+        // Add a Horizontal Stack
+        let horizontalStack = UIStackView()
+        horizontalStack.axis = .horizontal
+        horizontalStack.distribution = .fillEqually
+        horizontalStack.autoresizingMask = [
+            .flexibleWidth,
+            .flexibleHeight
+        ]
+        
+        // Create an UILabel for the name
+        let lblName = UILabel()
+        lblName.text = name.uppercased()
+        lblName.font = UIFont.systemFont(ofSize: 35,
+                                         weight: .heavy)
+        
+        horizontalStack.addArrangedSubview(lblName)
+        
+        // Create an UILabel for the power
+        let lblPower = UILabel()
+        lblPower.text = String(power)
+        lblPower.font = UIFont.systemFont(ofSize: 35,
+                                          weight: .heavy)
+        lblPower.textAlignment = .right
+        horizontalStack.addArrangedSubview(lblPower)
+        
+        // Adding it to the subview
+        self.addSubview(horizontalStack)
+        self.backgroundColor = .gray
+        self.roundCorners(withRadius: 15)
+    }
 }
