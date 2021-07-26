@@ -2,51 +2,33 @@
 //  PokedexUITests.swift
 //  PokedexUITests
 //
-//  Created by Martin García on 7/12/21.
+//  Created by Martin García on 7/24/21.
 //
 
 import XCTest
 
 class PokedexUITests: XCTestCase {
 
-    var app: XCUIApplication!
-
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
 
-      try super.setUpWithError()
+        // In UI tests it is usually best to stop immediately when a failure occurs.
+        continueAfterFailure = false
 
-      // In UI tests it is usually best to stop immediately when a failure occurs.
-      continueAfterFailure = false
-
-      app = XCUIApplication()
-      app.launch()
-
-      // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
 
     override func tearDownWithError() throws {
-      app = nil
-      try super.tearDownWithError()
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-      let tabBar = XCUIApplication().tabBars["Tab Bar"]
-      tabBar.buttons["Discovery"].tap()
-      tabBar.buttons["Pokedex"].tap()
-      tabBar.buttons["Search"].tap()
-    }
+    func testExample() throws {
+        // UI tests must launch the application that they test.
+        let app = XCUIApplication()
+        app.launch()
 
-    func testTabBarGraphsButton_CountNumberOfButtons() {
-      let tabBar = XCUIApplication().tabBars["Tab Bar"]
-      XCTAssertEqual(tabBar.buttons.count, 3, "Expected to have 3 tabbar items")
-
-    }
-
-    func testTappingOnDiscoveryTabBar() {
-      let tabBar = XCUIApplication().tabBars["Tab Bar"]
-      tabBar.buttons["Discovery"].tap()
-      XCTAssertTrue(tabBar.buttons["Discovery"].isSelected, "The discovery button was not selected")
+        // Use recording to get started writing UI tests.
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
     func testLaunchPerformance() throws {

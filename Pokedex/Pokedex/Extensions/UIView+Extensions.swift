@@ -2,27 +2,20 @@
 //  UIView+Extensions.swift
 //  Pokedex
 //
-//  Created by Martin García on 7/18/21.
+//  Created by Martin García on 7/24/21.
 //
 
 import UIKit
 
-
 extension UIView {
-    /// Array of all corners in a UIView
-    private static let allCorners: CACornerMask = [.layerMinXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner]
-    
-    /// Round a UIView
-    func round(radius: CGFloat = 10, corners: CACornerMask = allCorners) {
+    /**
+     It rounds corners
+     - TODO: Make it work with different things
+     - Note: Only works on UIViews
+     - Parameters:
+        - withRadius: The Radius of the Corners
+     */
+    func roundCorners(withRadius radius: CGFloat) {
         layer.cornerRadius = radius
-    }
-    
-    /// Add a shadow on top of the element
-    func withShadow() {
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.25
-        layer.shadowOffset = .zero
-        layer.shadowRadius = 10
-        layer.shouldRasterize = true
     }
 }
