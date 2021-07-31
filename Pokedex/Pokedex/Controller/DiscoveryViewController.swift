@@ -13,6 +13,8 @@ class DiscoveryViewController: UIViewController {
   // TODO change it to Pokemon
 // var selectedPokemon: Pokemon?
     var selectedPokemon: Pokemon2?
+  // TODO something to filtered our pokemons
+  var filteredPokemons: [Pokemon] = []
     
     @IBOutlet weak var pokemonTableView: UITableView!
     @IBOutlet weak var searchView: SearchView!
@@ -28,6 +30,28 @@ class DiscoveryViewController: UIViewController {
             detailVC.pokemon = selectedPokemon
         }
     }
+
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+
+    // TODO updateUI()
+    NetworkManager.shared.getPokemons{ response in
+      switch response {
+
+      case .success(let pokemons):
+        // TODO filter the pokemons
+        // TODO updateUI
+        break
+      case .failed:
+        // no actions required
+        break
+
+      }
+
+
+    }
+
+  }
     
 }
 
