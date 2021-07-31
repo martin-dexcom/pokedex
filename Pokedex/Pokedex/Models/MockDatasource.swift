@@ -8,7 +8,7 @@
 import Foundation
 
 struct MockDataSource {
-    static let pokemon = Pokemon(name: "Bulbasaur",
+    static let pokemon = Pokemon2(name: "Bulbasaur",
                           order: 35,
                           type: "grass",
                           stats: [
@@ -17,7 +17,7 @@ struct MockDataSource {
                             ("Defense", 99)
                           ],
                           image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png")
-    static let pokemon2 = Pokemon(name: "Pikachu",
+    static let pokemon2 = Pokemon2(name: "Pikachu",
                           order: 1,
                           type: "electric",
                           stats: [
@@ -35,7 +35,7 @@ struct MockDataSource {
 
 
 
-struct Pokemon {
+struct Pokemon2 {
     /// The name of the Pokemon
     let name: String
     /// The order of the Pokemon on the Pokedex App
