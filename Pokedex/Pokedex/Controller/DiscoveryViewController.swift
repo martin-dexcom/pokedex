@@ -5,6 +5,9 @@
 //  Created by Martin García on 7/25/21.
 //
 
+
+// origin/bootcamp/day
+// https://bit.ly/3fjvtLb
 import UIKit
 
 class DiscoveryViewController: UIViewController {
@@ -34,12 +37,11 @@ class DiscoveryViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        // TODO updateUI()
         NetworkManager.shared.getPokemons{ response in
             switch response {
             case .success(let pokemons):
-                self.pokemons = pokemons
-                self.filteredPokemons = pokemons
+                self.pokemons += pokemons
+                self.filteredPokemons = self.pokemons
                 self.updateUI()
                 break
             case .failed:
@@ -68,7 +70,6 @@ class DiscoveryViewController: UIViewController {
 
 extension DiscoveryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO change for the Pokemon model
         selectedPokemon = filteredPokemons[indexPath.row]
         performSegue(withIdentifier: "detailSegue", sender: self)
     }
@@ -90,13 +91,7 @@ extension DiscoveryViewController: UITableViewDataSource {
         // Get the Pokemon for this indexPatch
         let pokemon = filteredPokemons[indexPath.row]
         // Get url for pokeimage
-        let imageUrl = URL(string: pokemon.sprites?.frontDefault ?? "")
-        
-        // Setting our Cell
-        pokemonCell?.nameLabel.text = pokemon.name
-        pokemonCell?.pokemonImage?.sd_setImage(with: imageUrl, completed: nil)
-        pokemonCell?.typeLabel.text = pokemon.types?.first?.type?.name
-        pokemonCell?.numberLabel.text = "#\(pokemon.order ?? 0)"
+        pokemonCell?.setupWithPokemon(pokemon: pokemon)
         
         return pokemonCell!
     }

@@ -26,20 +26,16 @@ class PokemonDetailViewController: UIViewController {
     }
     
     func setupUI() {
-
-      // TODO this code will change
-
         // Setting up our labels
+        let type = pokemon?.types?.first?.type?.name ?? ""
         lblName.text = pokemon?.name?.uppercased()
         lblOrder.text = "#\(pokemon?.order ?? 0)"
-        lblType.text = "Fire type" //pokemon?.type?.lowercased()
-        
-        // Setting up our image
-//        let url = URL(string: pokemon?.image ?? "")
-        let url = URL(string:  "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" )
+        lblType.text = type
+        vStats.backgroundColor = UIColor.TypeColors.getColor(fromType: type)
+        let imageUrl = URL(string: pokemon?.sprites?.frontDefault ?? "")
 
 
-        if let unwrappedURL = url {
+        if let unwrappedURL = imageUrl {
             imgPokemon.sd_setImage(with: unwrappedURL, completed: nil)
         }
         
@@ -59,7 +55,12 @@ class PokemonDetailViewController: UIViewController {
         vStats.roundCorners(withRadius: 30)
     }
     
-
+    @IBAction func addButtonTap(_ sender: Any) {
+        if let pokemon = self.pokemon {
+            CoreDataManager.shared.savePokemonInPokedex(pokemon: pokemon)
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

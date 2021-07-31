@@ -16,6 +16,19 @@ class PokemonCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        backGroundView.layer.cornerRadius = 5
+    }
+    
+    func setupWithPokemon(pokemon: Pokemon) {
+        // Get url for pokeimage
+        let imageUrl = URL(string: pokemon.sprites?.frontDefault ?? "")
+        
+        // Setting our Cell
+        let type = pokemon.types?.first?.type?.name
+        nameLabel.text = pokemon.name
+        pokemonImage?.sd_setImage(with: imageUrl, completed: nil)
+        typeLabel.text = type
+        numberLabel.text = "#\(pokemon.order ?? 0)"
+        backGroundView.backgroundColor = UIColor.TypeColors.getColor(fromType: type ?? "")
     }
 }
