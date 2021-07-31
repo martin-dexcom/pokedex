@@ -27,6 +27,6 @@ extension PokemonResponse {
   init() {
     self.count = 0
     self.next = ""
-    self.result = []
+    self.results = []
   }
 }

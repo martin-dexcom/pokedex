@@ -10,7 +10,9 @@ import UIKit
 class DiscoveryViewController: UIViewController {
     
     let pokemons = MockDataSource.pokemons
-    var selectedPokemon: Pokemon?
+  // TODO change it to Pokemon
+// var selectedPokemon: Pokemon?
+    var selectedPokemon: Pokemon2?
     
     @IBOutlet weak var pokemonTableView: UITableView!
     @IBOutlet weak var searchView: SearchView!
@@ -31,6 +33,7 @@ class DiscoveryViewController: UIViewController {
 
 extension DiscoveryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // TODO change for the Pokemon model
         selectedPokemon = pokemons[indexPath.row]
         performSegue(withIdentifier: "detailSegue", sender: self)
     }
