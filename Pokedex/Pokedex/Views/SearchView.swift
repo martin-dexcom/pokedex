@@ -14,6 +14,8 @@ class SearchView: UIView {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
+    var delegate: SearchViewDelegate?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initViews()
@@ -28,6 +30,25 @@ class SearchView: UIView {
         Bundle.main.loadNibNamed("SearchView", owner: self, options: nil)
         contentView.frame = bounds
         addSubview(contentView)
+        searchBar.searchTextField.delegate = self
+        searchBar.delegate = self
     }
     
+}
+
+extension SearchView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        if let text = textField.text {
+            delegate?.searchedText(textSearched: text)
+        }
+        return true
+    }
+}
+
+
+extension SearchView: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        delegate?.searchedText(textSearched: "")
+    }
 }

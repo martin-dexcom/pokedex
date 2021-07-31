@@ -18,10 +18,7 @@ class PokemonDetailViewController: UIViewController {
     @IBOutlet weak var vStats: UIView!
     @IBOutlet weak var statsVstack: UIStackView!
     
-
-  // TODO use the Pokemon model
-  // var pokemon: Pokemon?
-    var pokemon: Pokemon2?
+    var pokemon: Pokemon?
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,13 +30,13 @@ class PokemonDetailViewController: UIViewController {
       // TODO this code will change
 
         // Setting up our labels
-      lblName.text = pokemon?.name.uppercased()
+        lblName.text = pokemon?.name?.uppercased()
         lblOrder.text = "#\(pokemon?.order ?? 0)"
         lblType.text = "Fire type" //pokemon?.type?.lowercased()
         
         // Setting up our image
 //        let url = URL(string: pokemon?.image ?? "")
-      let url = URL(string:  "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" ?? "")
+        let url = URL(string:  "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" )
 
 
         if let unwrappedURL = url {
@@ -47,10 +44,15 @@ class PokemonDetailViewController: UIViewController {
         }
         
       // Setup my Vstac?k
-        pokemon?.stats.forEach { (name: String, power: Int) in
+        /*pokemon?.stats.forEach { (name: String, power: Int) in
             let statElement = StatElement(name, power)
             statsVstack.addArrangedSubview(statElement)
-        }
+        }*/
+        pokemon?.stats?.forEach({ stat in
+            let statElement = StatElement(stat.stat?.name ?? "", stat.baseStat ?? 0)
+            statsVstack.addArrangedSubview(statElement)
+        })
+        
         
         
         // Add a corner radius

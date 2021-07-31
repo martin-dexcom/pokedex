@@ -2,24 +2,39 @@
 //  Pokemon.swift
 //  Pokedex
 //
-//  Created by Josué Arambula on 7/31/21.
+//  Created by Josué Arambula on 7/15/21.
 //
-
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
-//
-//   let hTTPPokeapiCoAPIV2Pokemon = try? newJSONDecoder().decode(HTTPPokeapiCoAPIV2Pokemon.self, from: jsonData)
 
 import Foundation
 
-// MARK: - HTTPPokeapiCoAPIV2Pokemon
+
+// API: http://pokeapi.co/api/v2/pokemon/2/
+// GET: http://pokeapi.co/api/v2/pokemon/{id or name}/
+// example
+// http://pokeapi.co/api/v2/pokemon/butterfree/
+
+
+
+// MARK: - Structs
+
+
+
+// MARK: HTTPPokeapiCoAPIV2Pokemon
+// This file was generated from JSON Schema using quicktype, do not modify it directly.
+// To parse the JSON, add this file to your project and do:
+//
+//   let pokemon = try? newJSONDecoder().decode(Pokemon.self, from: jsonData)
+
+import Foundation
+
+// MARK: - Pokemon
 struct Pokemon: Codable {
     let abilities: [Ability]?
     let baseExperience: Int?
     let forms: [Species]?
     let gameIndices: [GameIndex]?
     let height: Int?
-    let heldItems: [JSONAny]?
+    let heldItems: [HeldItem]?
     let id: Int?
     let isDefault: Bool?
     let locationAreaEncounters: String?
@@ -77,6 +92,23 @@ struct GameIndex: Codable {
         case gameIndex = "game_index"
         case version
     }
+}
+
+// MARK: - HeldItem
+struct HeldItem: Codable {
+    let item: Species?
+    let versionDetails: [VersionDetail]?
+
+    enum CodingKeys: String, CodingKey {
+        case item
+        case versionDetails = "version_details"
+    }
+}
+
+// MARK: - VersionDetail
+struct VersionDetail: Codable {
+    let rarity: Int?
+    let version: Species?
 }
 
 // MARK: - Move
@@ -147,14 +179,8 @@ struct Versions: Codable {
 
 // MARK: - Sprites
 class Sprites: Codable {
-    let backDefault: String?
-    let backFemale: JSONNull?
-    let backShiny: String?
-    let backShinyFemale: JSONNull?
-    let frontDefault: String?
-    let frontFemale: JSONNull?
-    let frontShiny: String?
-    let frontShinyFemale: JSONNull?
+    let backDefault, backFemale, backShiny, backShinyFemale: String?
+    let frontDefault, frontFemale, frontShiny, frontShinyFemale: String?
     let other: Other?
     let versions: Versions?
     let animated: Sprites?
@@ -171,7 +197,7 @@ class Sprites: Codable {
         case other, versions, animated
     }
 
-    init(backDefault: String?, backFemale: JSONNull?, backShiny: String?, backShinyFemale: JSONNull?, frontDefault: String?, frontFemale: JSONNull?, frontShiny: String?, frontShinyFemale: JSONNull?, other: Other?, versions: Versions?, animated: Sprites?) {
+    init(backDefault: String?, backFemale: String?, backShiny: String?, backShinyFemale: String?, frontDefault: String?, frontFemale: String?, frontShiny: String?, frontShinyFemale: String?, other: Other?, versions: Versions?, animated: Sprites?) {
         self.backDefault = backDefault
         self.backFemale = backFemale
         self.backShiny = backShiny
@@ -249,10 +275,7 @@ struct Emerald: Codable {
 
 // MARK: - GenerationVi
 struct GenerationVi: Codable {
-    let frontDefault: String?
-    let frontFemale: JSONNull?
-    let frontShiny: String?
-    let frontShinyFemale: JSONNull?
+    let frontDefault, frontFemale, frontShiny, frontShinyFemale: String?
 
     enum CodingKeys: String, CodingKey {
         case frontDefault = "front_default"
@@ -276,7 +299,7 @@ struct GenerationVii: Codable {
 // MARK: - DreamWorld
 struct DreamWorld: Codable {
     let frontDefault: String?
-    let frontFemale: JSONNull?
+    let frontFemale: String?
 
     enum CodingKeys: String, CodingKey {
         case frontDefault = "front_default"
@@ -336,6 +359,10 @@ class JSONNull: Codable, Hashable {
 
     public var hashValue: Int {
         return 0
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        // No-op
     }
 
     public init() {}
