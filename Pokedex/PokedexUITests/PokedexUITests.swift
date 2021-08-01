@@ -8,27 +8,66 @@
 import XCTest
 
 class PokedexUITests: XCTestCase {
+    var application: XCUIApplication?
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        
+        application = XCUIApplication()
+        application?.launch()
+        print("Set up with error")
+    }
+    
+    func test_searchingWithSearchbar_yields_oneResult() {
+        // Arrange
+        // get my application instance
+        guard let application = application else { return }
+        // get tab bar
+        let tabBar = application.tabBars
+        // Im going to make sure that Im on the discovery tab
+        tabBar.buttons["Discovery"].tap()
+        // get an instance of my searchbar
+        let searchField = application.otherElements["PokemonNameSearchDiscovery"]
+        searchField.tap()
+        
+        // Act
+        // search for charizard
+        searchField.typeText("Chari")
+        
+        // Press enter
+        application.keyboards.buttons["search"].tap()
+        
+        // Assert
+        // check if it exists
+        XCTAssertGreaterThan(application.tables.cells.count, 0)
+    }
+    
+    // Be back in 45 :) 
+    
+    func test_touchingTabs_should_moveTheUI() {
+        // Arrange
+        // I want to get everything I need to run my test.
+        guard let application = application else {
+            return
+        }
+        
+        let tabBar = application.tabBars
+        
+        // Act
+        // I want to do the actions to test them
+        tabBar.buttons["Search"].tap()
+        Thread.sleep(forTimeInterval: 2)
+        tabBar.buttons["Pokedex"].tap()
+        Thread.sleep(forTimeInterval: 2)
+        tabBar.buttons["Discovery"].tap()
+        // Assert
+        XCTAssertNotNil(application.staticTexts.element(matching: .any, identifier: "What Pokemon are you looking for?"))
+        
+        // If what I thought would happen, happened.
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
     func testLaunchPerformance() throws {
