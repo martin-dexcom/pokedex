@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toaster
 import SDWebImage
 // MARK: - Pokemon Controller
 class PokemonDetailViewController: UIViewController {
@@ -18,8 +19,11 @@ class PokemonDetailViewController: UIViewController {
     @IBOutlet weak var vStats: UIView!
     @IBOutlet weak var statsVstack: UIStackView!
     
+    @IBOutlet weak var addButton: UIButton!
+    
     var pokemon: Pokemon?
-        
+    var hideAddButton = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -27,6 +31,7 @@ class PokemonDetailViewController: UIViewController {
     
     func setupUI() {
         // Setting up our labels
+        addButton.isHidden = hideAddButton
         let type = pokemon?.types?.first?.type?.name ?? ""
         lblName.text = pokemon?.name?.uppercased()
         lblOrder.text = "#\(pokemon?.order ?? 0)"
@@ -56,9 +61,12 @@ class PokemonDetailViewController: UIViewController {
     }
     
     @IBAction func addButtonTap(_ sender: Any) {
+        
         if let pokemon = self.pokemon {
             CoreDataManager.shared.savePokemonInPokedex(pokemon: pokemon)
         }
+        let toast = Toast(text: "Pokemon saved", duration: Delay.short)
+        toast.show()
     }
     
     /*

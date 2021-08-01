@@ -108,6 +108,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addButton" destination="Qlz-tV-LBh" id="woL-nF-Jx3"/>
                         <outlet property="imgPokemon" destination="0Qq-MK-P68" id="Vit-I1-Tij"/>
                         <outlet property="lblName" destination="BOD-ai-lTP" id="lGG-OD-SG7"/>
                         <outlet property="lblOrder" destination="UNd-gO-BZj" id="8Ld-HQ-QdP"/>

@@ -31,4 +31,18 @@ class PokemonCell: UITableViewCell {
         numberLabel.text = "#\(pokemon.order ?? 0)"
         backGroundView.backgroundColor = UIColor.TypeColors.getColor(fromType: type ?? "")
     }
+    
+    func setupWithPokemon(pokemon: PokemonCD) {
+        // Get url for pokeimage
+        let imageUrl = URL(string: pokemon.image ?? "")
+        
+        // Setting our Cell
+        let type = pokemon.type ?? ""
+        nameLabel.text = pokemon.name
+        pokemonImage?.sd_setImage(with: imageUrl, completed: nil)
+        typeLabel.text = type
+        numberLabel.text = "#\(pokemon.id)"
+        backGroundView.backgroundColor = UIColor.TypeColors.getColor(fromType: type)
+
+    }
 }

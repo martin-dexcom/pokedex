@@ -31,7 +31,6 @@ class SearchView: UIView {
         contentView.frame = bounds
         addSubview(contentView)
         searchBar.searchTextField.delegate = self
-        searchBar.delegate = self
     }
     
 }
@@ -43,12 +42,5 @@ extension SearchView: UITextFieldDelegate {
             delegate?.searchedText(textSearched: text)
         }
         return true
-    }
-}
-
-
-extension SearchView: UISearchBarDelegate {
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        delegate?.searchedText(textSearched: "")
     }
 }

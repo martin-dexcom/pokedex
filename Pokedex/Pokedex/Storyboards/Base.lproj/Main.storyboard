@@ -160,6 +160,7 @@
                     <connections>
                         <outlet property="pokemonsTableView" destination="Ad9-gP-azV" id="IU4-9t-VBj"/>
                         <outlet property="searchView" destination="Hoo-Yi-zjx" id="hVG-G8-Lsk"/>
+                        <segue destination="VoL-kq-Ftm" kind="show" identifier="detailSegue" id="zBQ-1m-12f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g8S-ot-hRw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -309,7 +310,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Tdf-vo-bSV"/>
+        <segue reference="zBQ-1m-12f"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="PokedexLogo" width="183" height="183"/>
