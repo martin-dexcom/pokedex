@@ -20,6 +20,8 @@
 		946C1C8C26B5F8D6009CD5B4 /* SearchViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C1C8B26B5F8D6009CD5B4 /* SearchViewDelegate.swift */; };
 		946C1C8E26B60696009CD5B4 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C1C8D26B60696009CD5B4 /* UIColor+Extensions.swift */; };
 		946C1C9026B61114009CD5B4 /* PokeDexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C1C8F26B61114009CD5B4 /* PokeDexViewController.swift */; };
+		946C1C9326B702A3009CD5B4 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C1C9226B702A3009CD5B4 /* DetailView.swift */; };
+		946C1C9526B703BC009CD5B4 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946C1C9426B703BC009CD5B4 /* DetailViewModel.swift */; };
 		948ECF9226AC7CC6007B8626 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948ECF9126AC7CC6007B8626 /* AppDelegate.swift */; };
 		948ECF9426AC7CC6007B8626 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948ECF9326AC7CC6007B8626 /* SceneDelegate.swift */; };
 		948ECF9626AC7CC6007B8626 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948ECF9526AC7CC6007B8626 /* ViewController.swift */; };
@@ -74,6 +76,8 @@
 		946C1C8B26B5F8D6009CD5B4 /* SearchViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewDelegate.swift; sourceTree = "<group>"; };
 		946C1C8D26B60696009CD5B4 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		946C1C8F26B61114009CD5B4 /* PokeDexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeDexViewController.swift; sourceTree = "<group>"; };
+		946C1C9226B702A3009CD5B4 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		946C1C9426B703BC009CD5B4 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		948ECF8E26AC7CC6007B8626 /* Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		948ECF9126AC7CC6007B8626 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		948ECF9326AC7CC6007B8626 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -202,6 +206,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		946C1C9126B700B5009CD5B4 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				946C1C9226B702A3009CD5B4 /* DetailView.swift */,
+				946C1C9426B703BC009CD5B4 /* DetailViewModel.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
 		948ECF8526AC7CC6007B8626 = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +239,7 @@
 		948ECF9026AC7CC6007B8626 /* Pokedex */ = {
 			isa = PBXGroup;
 			children = (
+				946C1C9126B700B5009CD5B4 /* SwiftUI */,
 				9D126F5626B5CC87009222A1 /* Persistence */,
 				9D126F1026B5AF82009222A1 /* Networking */,
 				9460A83A26ADDE220069ADE3 /* Views */,
@@ -532,8 +546,10 @@
 				9D126F1226B5AFDA009222A1 /* PokemonResponse.swift in Sources */,
 				9D126F6226B5CD29009222A1 /* PokemonCD+CoreDataProperties.swift in Sources */,
 				9460A83E26ADE2A50069ADE3 /* SearchView.swift in Sources */,
+				946C1C9326B702A3009CD5B4 /* DetailView.swift in Sources */,
 				9D126F1F26B5BCE1009222A1 /* Pokemon.swift in Sources */,
 				9460A83126ACAB770069ADE3 /* PokemonDetailViewController.swift in Sources */,
+				946C1C9526B703BC009CD5B4 /* DetailViewModel.swift in Sources */,
 				948ECF9226AC7CC6007B8626 /* AppDelegate.swift in Sources */,
 				9D126F6126B5CD29009222A1 /* PokemonCD+CoreDataClass.swift in Sources */,
 				9D126F5826B5CCCD009222A1 /* CoreDataManager.swift in Sources */,

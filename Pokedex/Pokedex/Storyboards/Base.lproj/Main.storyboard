@@ -43,7 +43,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jgm-Y6-I40" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="637" y="479"/>
+            <point key="canvasLocation" x="861" y="479"/>
         </scene>
         <!--Pokedex-->
         <scene sceneID="cl9-4P-piI">
@@ -170,7 +170,7 @@
         <!--Discovery-->
         <scene sceneID="5Bn-77-zTH">
             <objects>
-                <viewController id="X7d-d5-x5u" customClass="DiscoveryViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DiscoveryViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="X7d-d5-x5u" customClass="DiscoveryViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uwb-6N-xvo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -310,7 +310,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="zBQ-1m-12f"/>
+        <segue reference="Tdf-vo-bSV"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="PokedexLogo" width="183" height="183"/>

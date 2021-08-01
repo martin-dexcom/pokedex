@@ -9,6 +9,7 @@
 // origin/bootcamp/day
 // https://bit.ly/3fjvtLb
 import UIKit
+import SwiftUI
 
 class DiscoveryViewController: UIViewController {
     
@@ -71,7 +72,15 @@ class DiscoveryViewController: UIViewController {
 extension DiscoveryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedPokemon = filteredPokemons[indexPath.row]
-        performSegue(withIdentifier: "detailSegue", sender: self)
+//        performSegue(withIdentifier: "detailSegue", sender: self)
+        guard let pokemon = self.selectedPokemon else {
+            return
+        }
+        
+        let viewModel = DetailViewModel(pokemon: pokemon)
+        let detailController = UIHostingController(rootView: DetailView(viewModel: viewModel))
+        
+        present(detailController, animated: true, completion: nil)
     }
 }
 
