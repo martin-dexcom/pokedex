@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Pokedex.xcodeproj">
+   </FileRef>
+   <Group
+      location = "group:Pokedex/.."
+      name = "Frameworks">
+      <FileRef
+         location = "build:Pods_Pokedex.framework"
+         assignedFileDataType = "com.apple.framework">
+      </FileRef>
+      <FileRef
+         location = "build:Pods_Pokedex_PokedexUITests.framework"
+         assignedFileDataType = "com.apple.framework">
+      </FileRef>
+      <FileRef
+         location = "build:Pods_PokedexTests.framework"
+         assignedFileDataType = "com.apple.framework">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:Pokedex/.."
+      name = "Frameworks">
+      <FileRef
+         location = "build:Pods_Pokedex.framework"
+         assignedFileDataType = "com.apple.framework">
+      </FileRef>
+      <FileRef
+         location = "build:Pods_Pokedex_PokedexUITests.framework"
+         assignedFileDataType = "com.apple.framework">
+      </FileRef>
+      <FileRef
+         location = "build:Pods_PokedexTests.framework"
+         assignedFileDataType = "com.apple.framework">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+</Workspace>
