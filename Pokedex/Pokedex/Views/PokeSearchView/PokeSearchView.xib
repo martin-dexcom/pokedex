@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PokeSearchView" customModule="Pokedex" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="hZc-XD-12D" id="y2z-Mf-6hO"/>
+                <outlet property="searchBar" destination="aiE-JQ-Bk8" id="nQ6-wg-s07"/>
+                <outlet property="title" destination="X6E-dm-IbX" id="3eP-iu-24T"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZc-XD-12D">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="313"/>
+            <subviews>
+                <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="aiE-JQ-Bk8">
+                    <rect key="frame" x="25" y="203" width="364" height="56"/>
+                    <textInputTraits key="textInputTraits" textContentType="name"/>
+                </searchBar>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.37999999523162842" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pokedex-logo" translatesAutoresizingMaskIntoConstraints="NO" id="foH-tM-ekh">
+                    <rect key="frame" x="282" y="-25" width="180" height="180"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="180" id="7VN-aE-QE2"/>
+                        <constraint firstAttribute="height" constant="180" id="bB7-Yu-9SZ"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What Pokemon are you looking for?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X6E-dm-IbX">
+                    <rect key="frame" x="20" y="67" width="374" height="107"/>
+                    <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="39"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="pb7-F7-Pvr"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="X6E-dm-IbX" secondAttribute="trailing" constant="20" id="8Tv-XS-fRt"/>
+                <constraint firstItem="aiE-JQ-Bk8" firstAttribute="top" secondItem="X6E-dm-IbX" secondAttribute="bottom" constant="29" id="9TS-00-gyx"/>
+                <constraint firstAttribute="trailing" secondItem="aiE-JQ-Bk8" secondAttribute="trailing" constant="25" id="Ac0-b8-Y0T"/>
+                <constraint firstAttribute="height" constant="313" id="FIv-8f-6ob"/>
+                <constraint firstItem="X6E-dm-IbX" firstAttribute="leading" secondItem="hZc-XD-12D" secondAttribute="leading" constant="20" id="IaI-3W-gM1"/>
+                <constraint firstItem="aiE-JQ-Bk8" firstAttribute="leading" secondItem="hZc-XD-12D" secondAttribute="leading" constant="25" id="NuQ-c9-r0c"/>
+                <constraint firstItem="X6E-dm-IbX" firstAttribute="top" secondItem="hZc-XD-12D" secondAttribute="top" constant="67" id="bBc-2h-DWB"/>
+                <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="aiE-JQ-Bk8" secondAttribute="bottom" constant="59" id="cdc-Z3-I08"/>
+                <constraint firstAttribute="trailing" secondItem="foH-tM-ekh" secondAttribute="trailing" constant="-48" id="tLw-xg-1Q7"/>
+                <constraint firstItem="foH-tM-ekh" firstAttribute="top" secondItem="hZc-XD-12D" secondAttribute="top" constant="-25" id="wlT-XH-2RX"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-10.144927536231885" y="-722.20982142857144"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Pokedex-logo" width="183" height="183"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

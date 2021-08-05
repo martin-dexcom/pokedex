@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SplashSK" translatesAutoresizingMaskIntoConstraints="NO" id="4lQ-6p-ngC">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iTJLogo" translatesAutoresizingMaskIntoConstraints="NO" id="WdB-2D-W2Z">
+                                <rect key="frame" x="163.66666666666666" y="761" width="63" height="63"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="63" id="0k6-OH-NIP"/>
+                                    <constraint firstAttribute="width" constant="63" id="u7Y-uu-8y5"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pokedex-logo" translatesAutoresizingMaskIntoConstraints="NO" id="j8k-ch-nxD">
+                                <rect key="frame" x="120" y="347" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="8jh-N5-vcW"/>
+                                    <constraint firstAttribute="height" constant="150" id="Emu-Pj-vRJ"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="WdB-2D-W2Z" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="5Td-m9-jSl"/>
+                            <constraint firstItem="4lQ-6p-ngC" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="DGq-4m-6wR"/>
+                            <constraint firstAttribute="bottom" secondItem="WdB-2D-W2Z" secondAttribute="bottom" constant="20" id="Fgu-Hw-sF7"/>
+                            <constraint firstItem="4lQ-6p-ngC" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="G4G-3i-O6i"/>
+                            <constraint firstItem="j8k-ch-nxD" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="NJk-tg-kgA"/>
+                            <constraint firstItem="4lQ-6p-ngC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hb2-pY-TEQ"/>
+                            <constraint firstItem="j8k-ch-nxD" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="utH-8t-h77"/>
+                            <constraint firstAttribute="bottom" secondItem="4lQ-6p-ngC" secondAttribute="bottom" id="wHc-oH-BCQ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Pokedex-logo" width="183" height="183"/>
+        <image name="SplashSK" width="428" height="926"/>
+        <image name="iTJLogo" width="63" height="63"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
